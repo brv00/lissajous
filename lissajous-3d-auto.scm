@@ -104,18 +104,18 @@
 (define (add-rear-wall scn vertices color)
   (let* ((ifv (find-farthest-vertex vertices))
          (vertices (build-list
-		     7 (lambda (i)
-			 (let ((v (list-ref vertices (^ ifv i))))
-			   (list (conv-x (first  v) (third v))
-				 (conv-y (second v) (third v))))))))
+                     7 (lambda (i)
+                         (let ((v (list-ref vertices (^ ifv i))))
+                           (list (conv-x (first  v) (third v))
+                                 (conv-y (second v) (third v))))))))
     (foldr (lambda (di scn)
              (let ((v0 (car vertices)) (v1 (list-ref vertices di))
-		   (v2 (list-ref vertices (% (* 2 di) 7)))
-		   (v3 (list-ref vertices (% (* 3 di) 7))))
+                   (v2 (list-ref vertices (% (* 2 di) 7)))
+                   (v3 (list-ref vertices (% (* 3 di) 7))))
                (add-grid scn
-			 (first v0) (second v0) (first v1) (second v1)
-			 (first v2) (second v2) (first v3) (second v3)
-			 4 color)))
+                         (first v0) (second v0) (first v1) (second v1)
+                         (first v2) (second v2) (first v3) (second v3)
+                         4 color)))
            scn '(1 2 4))))
 
 (define cube-vertices
@@ -150,17 +150,17 @@
 (define images1
   (build-list
     8 (lambda (i)
-	(make-image (make-rotation-matrix (* 1/16 pi (- 8 i)) -1.0 0.0 0.0)))))
+        (make-image (make-rotation-matrix (* 1/16 pi (- 8 i)) -1.0 0.0 0.0)))))
 (define images2
   (build-list
     8 (lambda (i)
-	(make-image (make-rotation-matrix (* 1/16 pi i) 0.0 -1.0 0.0)))))
+        (make-image (make-rotation-matrix (* 1/16 pi i) 0.0 -1.0 0.0)))))
 (define images3
   (build-list
     8 (lambda (i)
-	(make-image
-	  (mat*mat (make-rotation-matrix (* 1/16 pi (- 8 i)) 0.0 -1.0 0.0)
-		   (make-rotation-matrix (* 1/16 pi i) -1.0 0.0 0.0))))))
+        (make-image
+          (mat*mat (make-rotation-matrix (* 1/16 pi (- 8 i)) 0.0 -1.0 0.0)
+                   (make-rotation-matrix (* 1/16 pi i) -1.0 0.0 0.0))))))
 (define images (append images1 (append images2 images3)))
 
 (big-bang

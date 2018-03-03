@@ -31,7 +31,7 @@
              (if (null? xs) scn
                (let ((x (car xs)) (y (car ys)))
                  (lp (add-bold-line scn x0 y0 x y color)
-		     x y (cdr xs) (cdr ys)))))))
+                     x y (cdr xs) (cdr ys)))))))
     (lp scn (car xs) (car ys) (cdr xs) (cdr ys))))
 
 (define offset-x (/ (image-width (empty-scene)) 2))
@@ -80,12 +80,12 @@
   (plot background xs-1st-half (take (kth-ys nframes/2) npoints/2) line-color))
 (define images
   (build-list (-- nframes/2)
-	      (lambda (i)
-		(let ((ys (kth-ys (++ i))))
-		  (plot background
-			(cons (list-ref xs (-- npoints)) xs)
-			(cons (list-ref ys (-- npoints)) ys)
-			line-color)))))
+              (lambda (i)
+                (let ((ys (kth-ys (++ i))))
+                  (plot background
+                        (cons (list-ref xs (-- npoints)) xs)
+                        (cons (list-ref ys (-- npoints)) ys)
+                        line-color)))))
 (define frames
   (append (cons image-1st images) (cons image-middle (reverse images))))
 
