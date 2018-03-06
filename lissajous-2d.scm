@@ -32,7 +32,7 @@
 (define (conv-x x) (+ (* magnification x) offset-x))
 (define (conv-y y) (+ (* magnification y) offset-y))
 
-(define c1 5) (define c2 6) ; x = cos c1*θ, y = cos c1*θ+φ
+(define c1 5) (define c2 6) ; x = cos c1*θ, y = cos c2*θ+φ
 (define (draw-lissajous theta-min theta-max phi)
   (letrec ((lp (lambda (theta x0 y0 scn)
              (if (> theta theta-max) scn
